@@ -23,6 +23,7 @@ import java.util.logging.LogManager;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
+import be.seeseemelk.mockbukkit.help.HelpMapMock;
 import org.apache.commons.lang.Validate;
 import org.bukkit.BanEntry;
 import org.bukkit.BanList;
@@ -131,6 +132,7 @@ public class ServerMock implements Server
 	private ConsoleCommandSender consoleSender;
 	private GameMode defaultGameMode = GameMode.SURVIVAL;
 	private MockCommandMap commandMap;
+	private HelpMap helpMap;
 
 	public ServerMock()
 	{
@@ -154,6 +156,7 @@ public class ServerMock implements Server
 			logger.warning("Could not load file logger.properties");
 		}
 		logger.setLevel(Level.ALL);
+		helpMap = new HelpMapMock();
 	}
 
 	/**
@@ -1157,8 +1160,7 @@ public class ServerMock implements Server
 	@Override
 	public HelpMap getHelpMap()
 	{
-		// TODO Auto-generated method stub
-		throw new UnimplementedOperationException();
+		return helpMap;
 	}
 
 	@Override
