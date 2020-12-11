@@ -42,9 +42,9 @@ artifacts {
     archives javadocJar, sourcesJar
 }
 
-signing {
-    sign publishing.publications
-}
+//signing {
+//    sign publishing.publications
+//}
 
 jacocoTestReport {
     reports {
@@ -112,3 +112,12 @@ publishing {
 
 eclipse.classpath.downloadJavadoc = true
 eclipse.classpath.downloadSources = true
+
+def gitBranch() {
+    def branch = ""
+    def proc = "git rev-parse --abbrev-ref HEAD".execute()
+    proc.in.eachLine { line -> branch = line }
+    proc.err.eachLine { line -> println line }
+    proc.waitFor()
+    branch
+}
