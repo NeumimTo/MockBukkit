@@ -2,6 +2,8 @@ package be.seeseemelk.mockbukkit.entity;
 
 import java.util.UUID;
 
+import be.seeseemelk.mockbukkit.attribute.AttributeInstanceMock;
+import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Villager;
 import org.bukkit.entity.Zombie;
@@ -22,6 +24,7 @@ public class ZombieMock extends MonsterMock implements Zombie
 		super(server, uuid);
 		setMaxHealth(20);
 		setHealth(20);
+		attributes.put(Attribute.GENERIC_MOVEMENT_SPEED, new AttributeInstanceMock(Attribute.GENERIC_MOVEMENT_SPEED, 0.23));
 	}
 
 	@Override
